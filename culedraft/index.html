@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CuleDraft</title>
+<meta name="description" content="Fes l'onze definitiu amb jugadors de tots els Barça de la història i intenta guanyar set partits sense encaixar cap gol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="board">
+    <div class="stripes"></div>
+    <div class="board-in">
+      <div>
+        <h1>Cule<span class="seven">Draft</span></h1>
+        <p class="sub">Tira el dau, et toca un Barça de la història i n'esculls un jugador. Fes l'onze, juga set partits contra els grans equips d'Europa i busca el 7 a 0: guanyar-los tots sense encaixar cap gol.</p>
+      </div>
+      <div class="counter">
+        <div class="cell"><b id="cPicked">0/11</b><span>Jugadors</span></div>
+        <div class="cell"><b id="cRerolls">3</b><span>Re-tirades</span></div>
+        <div class="cell"><b id="cOvr">–</b><span>Mitjana</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="setup" aria-label="Opcions de partida">
+    <div class="group"><span class="lbl">Partida</span><div class="chips" id="kdChips"></div></div>
+    <div class="group" id="codeGroup" hidden><label class="lbl" for="codeIn">Codi de la lliga</label><input id="codeIn" class="txt" maxlength="20" placeholder="p. ex. PENYA" autocomplete="off"></div>
+    <div class="group"><span class="lbl">Sistema</span><div class="chips" id="fmChips"></div></div>
+    <div class="group"><span class="lbl">Estil</span><div class="chips" id="stChips"></div></div>
+    <div class="group"><span class="lbl">Mode</span><div class="chips" id="mdChips"></div></div>
+    <p class="hint" id="setupHint">El sistema i el mode es bloquegen quan fitxes el primer jugador.</p>
+  </section>
+
+  <div class="main">
+    <section aria-label="Alineació">
+      <div class="pitch" id="pitch"></div>
+      <div class="stats">
+        <div class="stat"><span>Atac</span><b id="sAtt">–</b></div>
+        <div class="stat"><span>Mig</span><b id="sMid">–</b></div>
+        <div class="stat"><span>Defensa</span><b id="sDef">–</b></div>
+        <div class="stat"><span>Química</span><b id="sChem">+0</b></div>
+      </div>
+    </section>
+
+    <section class="draft" aria-label="Sorteig">
+      <div class="actions">
+        <button class="btn" id="rollBtn"><svg class="die" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" fill="#fff"/><circle cx="7.5" cy="7.5" r="2" fill="#a50044"/><circle cx="12" cy="12" r="2" fill="#a50044"/><circle cx="16.5" cy="16.5" r="2" fill="#a50044"/></svg>Tira el dau</button>
+        <button class="btn alt" id="rerollBtn">Torna a tirar</button>
+        <button class="btn alt" id="resetBtn">Nova partida</button>
+      </div>
+      <div id="seasonBox"></div>
+      <div id="squadBox"></div>
+    </section>
+  </div>
+
+  <section class="tour" id="tour" hidden aria-live="polite"></section>
+
+  <section class="rank" aria-label="Classificació">
+    <div class="rank-head">
+      <div><h2>Classificació</h2><p class="foot" id="rankSub">Repte del dia</p></div>
+      <div class="group"><label class="lbl" for="nickIn">El teu àlies</label><div class="nickrow"><input id="nickIn" class="txt" maxlength="24" placeholder="Com et diuen els amics?" autocomplete="off"><button class="btn alt" id="nickBtn">Desa</button></div></div>
+    </div>
+    <div id="rankBox"><div class="empty">Carregant la classificació…</div></div>
+  </section>
+  <p class="foot">Valoracions orientatives fetes a partir de la trajectòria de cada jugador en aquella temporada. Si fitxes diversos jugadors de la mateixa temporada guanyes química.</p>
+</div>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
